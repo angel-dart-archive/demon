@@ -1,0 +1,22 @@
+# Provide args to a `listen` declaration to mark it as an HTTPS server.
+listen 443('server_chain.pem', 'server_key.pem') {
+
+    # Add additional options...
+    options {
+        compress 'gzip', 'deflate'
+    }
+
+    # Easily register routes...
+    routes {
+      '/': proxy('127.0.0.1')
+      '/': static('web');
+      '*': throw 404;
+    }
+}
+
+# Fallback server to redirect HTTPS
+listen 80 {
+    routes {
+        '*': redirect('https://' + $host + $path)
+    }
+}
