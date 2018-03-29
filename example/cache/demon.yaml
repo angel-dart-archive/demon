@@ -1,0 +1,14 @@
+servers:
+  $default:
+    server:
+      host: 127.0.0.1
+      port: 3000
+    routes:
+      "/":
+        text: "Hello, world!"
+    cache:
+      globs:
+        - "/img/*"
+        - "**.html"
+        - "main.dart.js"
+      invalidate: -1 # Never invalidate cached responses. Otherwise, provide a value in milliseconds.

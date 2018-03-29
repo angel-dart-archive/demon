@@ -1,0 +1,19 @@
+servers:
+  $default:
+    server:
+      host: 127.0.0.1
+      port: 3000
+    log:
+      file: log.txt
+      email:
+        to: foo@bar.baz
+        host: smtp.google.com
+        port: 587
+        username: foo@gmail.com
+        password: bar
+        ssl: True
+      sentry:
+        dsn: YOUR_DSN
+    routes:
+      "/":
+        text: "Hello, world!"

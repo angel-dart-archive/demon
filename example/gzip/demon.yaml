@@ -1,0 +1,11 @@
+servers:
+  $default:
+    server:
+      host: 127.0.0.1
+      port: 3000
+      compression:
+        - gzip
+        - deflate
+    routes:
+      "/":
+        text: "Hello, world!"

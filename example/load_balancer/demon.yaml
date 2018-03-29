@@ -1,0 +1,40 @@
+servers:
+  $default:
+    server:
+      host: 0.0.0.0
+      port: 3000
+    routes:
+      "*":
+        load_balancer:
+          algorithm: round_robin # Or: sticky_session, least_latency
+          servers:
+            - hello
+            - goodbye
+            - 127.0.0.1:3000 # Can use an IP
+      "*":
+        status: 502
+        text: 502 Bad Gateway
+
+  hello:
+    server:
+      host: 127.0.0.1
+      port: 0
+    routes:
+      "/":
+        text: "Hello, world!"
+
+  goodbye:
+    server:
+      host: 127.0.0.1
+      port: 0
+    routes:
+      "/":
+        text: "Goodbye, world!"
+
+  japanese:
+    server:
+      host: 127.0.0.1
+      port: 3000
+    routes:
+      "/":
+        text: "こんにちは世界!"

@@ -1,0 +1,14 @@
+servers:
+  $default:
+    server:
+      host: 127.0.0.1
+      port: 3000
+      http2: True
+      ssl:
+        chain: chain.pem
+        chain_password: password
+        key: key.pem
+        key_password: password
+    routes:
+      "/":
+        text: "Hello, world!"
